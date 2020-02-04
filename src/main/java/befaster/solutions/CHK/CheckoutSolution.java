@@ -7,7 +7,12 @@ import java.util.Map;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
-        final String[] skuCodes = skus.split("");
+
+        if (skus == null) return -1;
+        if (skus.equals("")) return 0;
+
+
+        final String[] skuCodes = skus.toUpperCase().split("");
         final Map<String, Integer> skuMap = new HashMap<String, Integer>();
         for (String key : skuCodes) {
             if (skuMap.containsKey(key)) {
@@ -50,4 +55,3 @@ public class CheckoutSolution {
         return totalValue;
     }
 }
-
