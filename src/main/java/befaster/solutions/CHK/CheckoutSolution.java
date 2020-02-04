@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
-        final String[] skuCodes = skus.split(",");
+        final String[] skuCodes = skus.split("");
         final Map<String, Integer> skuMap = new HashMap<String, Integer>();
         for (String key : skuCodes) {
             if (skuMap.containsKey(key)) {
@@ -24,6 +24,8 @@ public class CheckoutSolution {
 
         for (Map.Entry<String,Integer> entry : skuMap.entrySet())  {
 
+            if (totalValue == -1) break;
+
             switch (entry.getKey()) {
                 case "D":
                     totalValue+=15;
@@ -39,11 +41,13 @@ public class CheckoutSolution {
                     break;
 
                 default:
+                    totalValue = -1;
                     break;
             }
         }
 
-        return totalValue;
 
+        return totalValue;
     }
 }
+
