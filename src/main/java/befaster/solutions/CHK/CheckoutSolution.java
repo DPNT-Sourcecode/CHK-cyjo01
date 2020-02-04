@@ -12,7 +12,7 @@ public class CheckoutSolution {
         if (skus.equals("")) return 0;
 
 
-        final String[] skuCodes = skus.toUpperCase().split("");
+        final String[] skuCodes = skus.split("");
         final Map<String, Integer> skuMap = new HashMap<String, Integer>();
         for (String key : skuCodes) {
             if (skuMap.containsKey(key)) {
@@ -33,10 +33,10 @@ public class CheckoutSolution {
 
             switch (entry.getKey()) {
                 case "D":
-                    totalValue+=15;
+                    totalValue+=entry.getValue() * 15;
                     break;
                 case "C":
-                    totalValue+=20;
+                    totalValue+=entry.getValue() * 20;
                     break;
                 case "B":
                     totalValue+=(int) Math.floor( entry.getValue() / 2 * 45 + entry.getValue() % 2 * 30);
@@ -49,6 +49,7 @@ public class CheckoutSolution {
                     totalValue = -1;
                     break;
             }
+            System.out.println("entry.getKey() : " + entry.getKey() + " --> totalValue: " + totalValue);
         }
 
 

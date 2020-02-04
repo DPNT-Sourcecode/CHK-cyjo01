@@ -20,6 +20,8 @@ public class CheckoutSolutionTest {
         assertThat(sum.checkout(""), equalTo(0));
         assertThat(sum.checkout("-"), equalTo(-1));
         assertThat(sum.checkout(null), equalTo(-1));
-        assertThat(sum.checkout("a"), equalTo(50));
+        assertThat(sum.checkout("ABCa"), equalTo(-1));
+        assertThat(sum.checkout("ABCDABCD"), equalTo(215));
+
     }
 }
